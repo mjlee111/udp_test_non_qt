@@ -49,14 +49,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    MainWindow(int argc, char** argv);
+    virtual ~MainWindow();
     bool init();
     void udp_write(QString text);
     void sendVideo(QByteArray img, uint16_t port);
 
     cv::Mat *Cam_img=NULL;
     cv::Mat Original;
+    std::vector<uchar> usb1_buff;
 
     void run();
     void loop_test();
@@ -88,8 +89,6 @@ private:
     char** init_argv;
 
 private slots:
-    void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
 };
 
 #endif // MAINWINDOW_H
