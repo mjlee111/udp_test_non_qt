@@ -21,7 +21,7 @@ find_package(Boost REQUIRED COMPONENTS system)
 include_directories(${catkin_INCLUDE_DIRS})
 
 catkin_package(
-    INCLUDE_DIRS include LIBRARIES udp_test_non_qt
+    INCLUDE_DIRS LIBRARIES udp_test_non_qt
     CATKIN_DEPENDS
     image_transport
     roslib

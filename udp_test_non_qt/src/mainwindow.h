@@ -14,6 +14,7 @@
 #include <string>
 #include <std_msgs/String.h>
 #include <sstream>
+#include <thread>
 
 #include <QObject>
 #include <QtNetwork/QUdpSocket>
@@ -49,7 +50,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(int argc, char** argv);
+    MainWindow(int argc, char** argv, QWidget *parent = 0);
     virtual ~MainWindow();
     bool init();
     void udp_write(QString text);
@@ -69,6 +70,8 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void udp_read();
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 
 private:
 
@@ -87,6 +90,7 @@ private:
     void Cam_Callback(const sensor_msgs::ImageConstPtr& msg_img);
     int init_argc;
     char** init_argv;
+    std::thread th;
 
 private slots:
 };
