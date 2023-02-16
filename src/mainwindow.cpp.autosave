@@ -37,7 +37,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowIcon(QIcon("./images/icon.jpg"));
+    setWindowIcon(QIcon(":/icon.jpg"));
     ros::init(init_argc,init_argv,"udp_test_non_qt");
     if ( ! ros::master::check() ) {
         return;
@@ -101,13 +101,9 @@ if(Cam_img == NULL && !isRecved)
 
       vector<int> param = vector<int>(2);
       param[0]=CV_IMWRITE_JPEG_QUALITY;
-      param[1]=70;
+      param[1]=95;
+
       imencode(".jpg",Original, usb1_buff, param);
-
-
-	QImage usb_image((const unsigned char*)(Original.data), Original.cols, Original.rows, QImage::Format_RGB888);
-  ui->robot_cam->setPixmap(QPixmap::fromImage(usb_image.rgbSwapped()));
-
 
       QByteArray array;
   for(auto val: usb1_buff)
@@ -126,9 +122,9 @@ if(Cam_img == NULL && !isRecved)
     if(Cam_img!=NULL)Cam_img=NULL;
     }
   }
-  
+  QImage usb_image((const unsigned char*)(Original.data), Original.cols, Original.rows, QImage::Format_RGB888);
+  ui->robot_cam->setPixmap(QPixmap::fromImage(usb_image.rgbSwapped()));
 }
-
 
 void MainWindow::udp_read(){
     QByteArray buffer;

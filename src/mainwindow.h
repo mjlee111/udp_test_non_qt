@@ -56,12 +56,12 @@ public:
     void udp_write(QString text);
     void sendVideo(QByteArray img, uint16_t port);
 
+
     cv::Mat *Cam_img=NULL;
     cv::Mat Original;
     std::vector<uchar> usb1_buff;
 
     void run();
-    void loop_test();
     bool ui_check = false;
 
 Q_SIGNALS:

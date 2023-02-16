@@ -1,0 +1,17 @@
+<launch>
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node">
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="960" />
+    <param name="image_height" value="540" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+    <param name="contrast" value="134"/>
+    <param name="brightness" value="107"/>
+    <param name="saturation" value="155"/>
+    <param name="sharpness" value="120"/>
+    <param name="exposure" value="120"/>
+  </node>
+  <node name="udp_test_non_qt" pkg="udp_test_non_qt" type="udp_test_non_qt">
+  </node>
+</launch>
